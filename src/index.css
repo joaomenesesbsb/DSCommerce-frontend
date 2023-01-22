@@ -76,3 +76,25 @@ main {
     font-size: 24px;
   }
 }
+
+.dsc-card {
+  border: 1px solid var(--dsc-color-card-border);
+  border-radius: 4px;
+  background-color: var(--dsc-color-card-bg);
+}
+
+.dsc-line-bottom {
+  border-bottom: 1px solid var(--dsc-color-card-border);
+}
+
+.dsc-btn-page-container {
+  width: 100%;
+  display: grid;
+  grid-gap: 20px;
+}
+
+@media (min-width: 576px) {
+  .dsc-btn-page-container {
+    width: 220px;
+  }
+}
