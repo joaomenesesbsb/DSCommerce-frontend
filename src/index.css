@@ -65,6 +65,10 @@ main {
 .dsc-txt-left {
   text-align: left;
 }
+#catalog-section {
+  padding: 20px 0;
+}
+
 
 @media (min-width: 576px) {
   .dsc-section-title {
