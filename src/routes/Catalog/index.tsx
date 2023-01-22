@@ -1,4 +1,4 @@
-import DSCButton from "../../components/Button";
+import DSCBtnNextPage from "../../components/Buttons/NextPage";
 import DSCCardCatalog from "../../components/CardCatalog";
 import DSCHeader from "../../components/Header";
 import DSCSearchBar from "../../components/SearchBar";
@@ -24,7 +24,7 @@ export default function Catalog() {
                         <DSCCardCatalog />
                         <DSCCardCatalog />
                     </div>
-                    <DSCButton />
+                    <DSCBtnNextPage />
                 </section>
             </main>
         </>
