@@ -1,7 +1,7 @@
 import './styles.css';
 import cart from '../../assets/cart.png';
 
-export default function DSCHeader() {
+export default function HeaderClient() {
     return (
         <header className='dsc-header-client'>
             <nav className="dsc-container">

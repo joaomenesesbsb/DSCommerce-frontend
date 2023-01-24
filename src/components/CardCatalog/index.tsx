@@ -1,5 +1,4 @@
 import './styles.css';
-import computer from '../../assets/computer.png';
 import { ProductDTO } from '../../models/product';
 
 type Props = {
@@ -10,7 +9,7 @@ export default function DSCCardCatalog({ product }: Props) {
     return (
         <div className="dsc-card">
             <div className="dsc-catalog-card-top dsc-line-bottom">
-                <img src={computer} alt="Computer" />
+                <img src={product.imgUrl} alt="Computer" />
             </div>
             <div className="dsc-catalog-card-bottom">
                 <h3>R$ {product.price} </h3>
