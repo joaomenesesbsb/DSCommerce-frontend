@@ -1,6 +1,6 @@
 import DSCBtnNextPage from "../../components/Buttons/NextPage";
 import DSCCardCatalog from "../../components/CardCatalog";
-import DSCHeader from "../../components/Header";
+import DSCHeader from "../../components/HeaderClient";
 import DSCSearchBar from "../../components/SearchBar";
 
 export default function Catalog() {
