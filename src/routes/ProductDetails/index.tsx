@@ -31,8 +31,8 @@ export default function ProductDetails() {
                 <section id="product-details-section" className="dsc-container">
                     <DSCProductDetailCard product={product}/>
                     <div className="dsc-btn-page-container">
-                        <BtnPrimary />
-                        <BtnSecundary />
+                        <BtnPrimary name="Comprar" />
+                        <BtnSecundary name="Inicio" />
                     </div>
                 </section>
             </main>
