@@ -13,7 +13,7 @@ export default function App() {
           <Route path="catalog" element={<Catalog />} />
           <Route path="product-details/:productId" element={<ProductDetails />} />
         </Route>
-        <Route path="*" element={<Navigate to={"/"} />} />
+          <Route path="*" element={<Navigate to={"/"} />} />
       </Routes>
     </BrowserRouter>
 
