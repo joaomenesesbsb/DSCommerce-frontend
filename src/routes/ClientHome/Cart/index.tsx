@@ -1,9 +1,12 @@
 import './styles.css';
 import * as cartService from '../../../services/cart-service';
 import { OrderDTO, OrderItemDTO } from '../../../models/order';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { ContextCartCount } from '../../../utils/context-cart';
 export default function Cart() {
+
+    const { setContextCartCount } = useContext(ContextCartCount);
 
     const [cart, setCart] = useState<OrderDTO>(cartService.getCart());
 
@@ -14,7 +17,9 @@ export default function Cart() {
 
     function handledDecreaseItem(productId: number) {
         cartService.decreaseItem(productId);
-        setCart(cartService.getCart());
+        const newCart = cartService.getCart();
+        setCart(newCart);
+        setContextCartCount(newCart.items.length);
     }
 
     return (
