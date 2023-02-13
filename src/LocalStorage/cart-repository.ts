@@ -1,5 +1,4 @@
 import { OrderDTO, OrderItemDTO } from "../models/order";
-import { ProductDTO } from "../models/product";
 import { CART_KEY } from "../utils/system";
 
 export function save(cart : OrderDTO) {

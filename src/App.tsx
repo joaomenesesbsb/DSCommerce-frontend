@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import Admin from "./routes/Admin";
+import AdminHome from "./routes/Admin/AdminHome";
 import ClientHome from "./routes/ClientHome";
 import Cart from "./routes/ClientHome/Cart";
 import Catalog from "./routes/ClientHome/Catalog";
 import Login from "./routes/ClientHome/Login";
-import ProductDetails from "./routes/ProductDetails";
+import ProductDetails from "./routes/ClientHome/ProductDetails";
 import { ContextCartCount } from "./utils/context-cart";
 
 export default function App() {
@@ -21,6 +23,9 @@ export default function App() {
             <Route path="product-details/:productId" element={<ProductDetails />} />
             <Route path="cart" element={<Cart />} />
             <Route path="login" element={<Login />} />
+          </Route>
+          <Route path="/admin/" element={<Admin />}>
+          <Route index element={<AdminHome />} />
           </Route>
           <Route path="*" element={<Navigate to={"/"} />} />
         </Routes>

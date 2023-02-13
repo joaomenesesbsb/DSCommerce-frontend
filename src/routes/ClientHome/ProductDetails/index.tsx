@@ -1,14 +1,14 @@
-import BtnPrimary from '../../components/Buttons/BtnPrimary';
-import BtnSecundary from '../../components/Buttons/BtnSecundary';
-import DSCProductDetailCard from '../../components/ProductDetailCard';
+import BtnPrimary from '../../../components/Buttons/BtnPrimary';
+import BtnSecundary from '../../../components/Buttons/BtnSecundary';
+import DSCProductDetailCard from '../../../components/ProductDetailCard';
 import './styles.css';
-import * as productService from '../../services/product-service';
-import * as cartService from '../../services/cart-service';
+import * as productService from '../../../services/product-service';
+import * as cartService from '../../../services/cart-service';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { useContext, useEffect, useState } from 'react';
-import { ProductDTO } from '../../models/product';
-import { ContextCartCount } from '../../utils/context-cart';
+import { ProductDTO } from '../../../models/product';
+import { ContextCartCount } from '../../../utils/context-cart';
 
 export default function ProductDetails() {
 
