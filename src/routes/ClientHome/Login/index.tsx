@@ -13,8 +13,10 @@ export default function Login() {
     function handleSubmit(e: any) {
         e.preventDefault();
         authService.loginRequest(formData)
-        .then(response => 
+        .then(response => {
             console.log(response.data)
+            authService.saveAccessToken(response.data.access_token) 
+        }
             )
             .catch(error => 
                 console.log(error));

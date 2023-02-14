@@ -5,8 +5,7 @@ export function save(token : string) {
 }
 
 export function get() : string | null {
-    const token = localStorage.getItem(TOKEN_KEY);
-    return token;
+    return localStorage.getItem(TOKEN_KEY);
 }
 
 export function remove() {
