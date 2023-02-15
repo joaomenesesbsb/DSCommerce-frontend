@@ -2,7 +2,7 @@ import { AxiosRequestConfig } from "axios";
 import QueryString from "qs";
 import { CredentialsDTO } from "../models/auth";
 import { CLIENT_ID, CLIENT_SECRET } from "../utils/system";
-import { requestBackend } from "./request";
+import { requestBackend } from "../utils/request";
 import * as accessTokenRepository from "../LocalStorage/access-token-repository";
 
 export function loginRequest(loginData: CredentialsDTO) {
