@@ -1,21 +1,28 @@
 import './styles.css';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { CredentialsDTO } from '../../../models/auth';
 import * as authService from '../../../services/auth-service';
+import { useNavigate } from 'react-router-dom';
+import { ContextToken } from '../../../utils/context-token';
 
 export default function Login() {
+
+    const navigate = useNavigate();
 
     const [formData, setFormData] = useState<CredentialsDTO>({
         username: '',
         password: ''
     })
 
+    const {setContextTokenPayload} = useContext(ContextToken);
+
     function handleSubmit(e: any) {
         e.preventDefault();
         authService.loginRequest(formData)
         .then(response => {
-            console.log(response.data)
-            authService.saveAccessToken(response.data.access_token) 
+            authService.saveAccessToken(response.data.access_token); 
+            setContextTokenPayload(authService.getAccessTokenPayload());
+            navigate('/cart');
         }
             )
             .catch(error => 
