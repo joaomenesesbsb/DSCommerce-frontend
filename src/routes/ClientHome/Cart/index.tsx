@@ -43,9 +43,9 @@ export default function Cart() {
                                                 <div className="dsc-cart-item-description">
                                                     <h3>{item.name}</h3>
                                                     <div className="dsc-cart-item-quantity-container">
-                                                        <div onClick={() =>handledDecreaseItem(item.productId)} className="dsc-cart-item-quantity-btn">-</div>
+                                                        <div onClick={() => handledDecreaseItem(item.productId)} className="dsc-cart-item-quantity-btn">-</div>
                                                         <p>{item.quantity}</p>
-                                                        <div onClick={() =>handleIncreaseItem(item.productId)} className="dsc-cart-item-quantity-btn">+</div>
+                                                        <div onClick={() => handleIncreaseItem(item.productId)} className="dsc-cart-item-quantity-btn">+</div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -64,9 +64,11 @@ export default function Cart() {
 
                 }
                 <div className="dsc-btn-page-container">
-                    <div className="dsc-btn dsc-btn-blue">
-                        Finalizar pedido
-                    </div>
+                    <Link to={'/confirmation/1'}>
+                        <div className="dsc-btn dsc-btn-blue">
+                            Finalizar pedido
+                        </div>
+                    </Link>
                     <Link to={'/catalog'}>
                         <div className="dsc-btn dsc-btn-white">
                             Continuar comprando
