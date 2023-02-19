@@ -94,8 +94,17 @@ main {
   grid-gap: 20px;
 }
 
+.dsc-menu-item-active {
+  font-weight: 700;
+}
+
+.dsc-menu-item-not-active{
+  font-weight: 400;
+}
+
 @media (min-width: 576px) {
   .dsc-btn-page-container {
     width: 220px;
   }
 }
+

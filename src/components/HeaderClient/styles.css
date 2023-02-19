@@ -52,9 +52,6 @@ header {
     font-size: 14px;
   }
   
-  .dsc-menu-item-active {
-    font-weight: 700;
-  }
   
   .dsc-logged-user {
     display: flex;
@@ -72,9 +69,7 @@ header {
     font-size: 12px;
   }
   
-  .dsc-navbar-right a {
-    font-weight: 700;
-  }
+  
   
   @media (min-width: 576px) {
     nav h1 {
