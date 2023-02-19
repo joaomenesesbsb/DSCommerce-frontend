@@ -6,7 +6,7 @@ type Props = {
 
 }
 
-export default function DSCSearchBar({ onSearch }: Props) {
+export default function SearchBar({ onSearch }: Props) {
 
     const [text, setText] = useState('');
 
