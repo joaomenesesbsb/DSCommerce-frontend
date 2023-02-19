@@ -1,4 +1,3 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 import DSCBtnNextPage from "../../../components/Buttons/NextPage";
 import CardCatalog from "../../../components/CardCatalog";
