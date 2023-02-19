@@ -13,8 +13,10 @@ export default function Confirmation() {
 
     useEffect(() => {
         orderService.findByIdRequest(Number(params.orderId))
-        .then(response => 
-            setOrder(response.data))
+            .then(response => {
+                setOrder(response.data)
+            }
+            )
     }, []);
 
     return (
@@ -34,30 +36,30 @@ export default function Confirmation() {
                                     </div>
                                 </div>
                                 <div className="dsc-cart-item-right">
-                                    R$ {(item.subTotal).toFixed(2)}
+                                    R$ {(item.quantity * item.price).toFixed(2)}
                                 </div>
                             </div>
                         ))
                     }
-                   
-                
-                <div className="dsc-cart-total-container">
-                    <h3>{order?.total.toFixed(2)}</h3>
-                </div>
-            </div>
 
-            <div className="dsc-confirmation-message dsc-mb20">
-                Pedido realizado! Número {order?.id}
-            </div>
-            <div className="dsc-btn-page-container">
-                    <Link to={'/'}>
-                    <div className="dsc-btn dsc-btn-white">
-                    Início
+
+                    <div className="dsc-cart-total-container">
+                        <h3>{order?.total.toFixed(2)}</h3>
+                    </div>
                 </div>
+
+                <div className="dsc-confirmation-message dsc-mb20">
+                    Pedido realizado! Número {order?.id}
+                </div>
+                <div className="dsc-btn-page-container">
+                    <Link to={'/'}>
+                        <div className="dsc-btn dsc-btn-white">
+                            Início
+                        </div>
                     </Link>
-                
-            </div>
-        </section>
-    </main >
+
+                </div>
+            </section>
+        </main >
     );
 }
