@@ -6,6 +6,7 @@ import { ProductDTO } from '../../../models/product';
 import * as productService from '../../../services/product-service';
 import SearchBar from '../../../components/SearchBar';
 import DSCBtnNextPage from '../../../components/Buttons/NextPage';
+import DialogInfo from '../../../components/DialogInfo';
 
 type QueryParams = {
   page: number,
@@ -13,6 +14,11 @@ type QueryParams = {
 }
 
 export default function ProductListing() {
+
+  const [dialogInfoData, setDialogInfoData] = useState({
+    visible: false,
+    message: 'Operação com sucesso!'
+  })
 
   const [isLastPage, setIsLastPage] = useState(false);
 
@@ -30,6 +36,14 @@ export default function ProductListing() {
 
   function handleNextPage() {
     setQueryParams({ ...queryParams, page: queryParams.page + 1 });
+  }
+
+  function handleDialogInfoClose(){
+    setDialogInfoData({...dialogInfoData, visible: false});
+  }
+
+  function handleDeleteClick(){
+    setDialogInfoData({ ...dialogInfoData, visible: true });
   }
 
   useEffect(() => {
@@ -72,7 +86,7 @@ export default function ProductListing() {
                   <td className="dsc-tb768">R$ {item.price.toFixed(2)}</td>
                   <td className="dsc-txt-left">{item.name}</td>
                   <td><img className="dsc-product-listing-btn" src={editIcon} alt="Editar" /></td>
-                  <td><img className="dsc-product-listing-btn" src={deleteIcon} alt="Deletar" /></td>
+                  <td><img onClick={handleDeleteClick} className="dsc-product-listing-btn" src={deleteIcon} alt="Deletar" /></td>
                 </tr>)
             }
 
@@ -81,11 +95,20 @@ export default function ProductListing() {
         {
           !isLastPage &&
           <div onClick={handleNextPage}>
-              <DSCBtnNextPage />
+            <DSCBtnNextPage />
           </div>
         }
 
       </section>
+
+      {
+        dialogInfoData.visible &&
+        <DialogInfo
+          message={dialogInfoData.message}
+          onDialogClose={handleDialogInfoClose}
+        />
+      }
+
     </main>
   );
 }
