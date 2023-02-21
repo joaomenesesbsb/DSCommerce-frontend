@@ -194,3 +194,7 @@ main {
   grid-template-columns: 1rf 1rf;
   grid-gap: 20px;
 }
+
+.dsc-dialog-btn {
+  width: 100%;
+}

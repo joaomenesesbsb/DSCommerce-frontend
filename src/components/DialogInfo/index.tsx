@@ -11,7 +11,7 @@ export default function DialogInfo({message, onDialogClose}: Props) {
         <div className="dsc-dialog-bg" onClick={() => onDialogClose()}>
             <div className="dsc-dialog-box" onClick={(e) => e.stopPropagation()}>
                 <h2>{message}</h2>
-                <div className="dsc-dialog-btn-container" onClick={() => onDialogClose()}>
+                <div className="dsc-dialog-btn" onClick={() => onDialogClose()}>
                 <BtnPrimary name="OK"/>
                 </div>
             </div>
