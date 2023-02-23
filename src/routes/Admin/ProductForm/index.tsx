@@ -22,7 +22,7 @@ export default function ProductForm() {
       placeholder: "nome",
     },
     price: {
-      value: 200,
+      value: "",
       id: "price",
       name: "price",
       type: "number",
@@ -43,10 +43,6 @@ export default function ProductForm() {
 
   useEffect(() => {
     if (isEditing) {
-
-      const obj = forms.validate(formData, 'price')
-      console.log(obj)
-
       productService.findById(Number(params.productId))
         .then(response => {
           setFormData(forms.updateAll(formData, response.data))
@@ -55,7 +51,9 @@ export default function ProductForm() {
   }, [])
 
   function handleInputChange(e: any) {
-    setFormData(forms.update(formData, e.target.name, e.target.value));
+    const dataUpdated = forms.update(formData, e.target.name, e.target.value);
+    const dataValidated = forms.validate(dataUpdated, e.target.name);
+    setFormData(dataValidated);
   }
 
   return (
@@ -71,6 +69,7 @@ export default function ProductForm() {
                   className="dsc-form-control"
                   onChange={handleInputChange}
                 />
+                <div className='dsc-form-error'>{formData.name.message}</div>
               </div>
               <div>
                 <FormInput
@@ -78,6 +77,7 @@ export default function ProductForm() {
                   className="dsc-form-control"
                   onChange={handleInputChange}
                 />
+                <div className='dsc-form-error'>{formData.price.message}</div>
               </div>
               <div>
                 <FormInput
@@ -85,6 +85,7 @@ export default function ProductForm() {
                   className="dsc-form-control"
                   onChange={handleInputChange}
                 />
+                <div className='dsc-form-error'>{formData.imgUrl.message}</div>
               </div>
 
             </div>
