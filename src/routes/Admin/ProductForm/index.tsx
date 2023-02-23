@@ -19,6 +19,10 @@ export default function ProductForm() {
       name: "name",
       type: "text",
       placeholder: "nome",
+      validation: function(v : string) {
+        return v.length >= 3 && v.length <= 80;
+      },
+      message: 'Favor informar um nome de 3 a 80 caracteres.'
     },
     price: {
       value: "",
@@ -29,7 +33,7 @@ export default function ProductForm() {
       validation: function (v: any) {
         return Number(v) > 0;
       },
-      message: 'Favor informar um valor positivo'
+      message: 'Favor informar um valor positivo.'
     },
     imgUrl: {
       value: "",
@@ -68,6 +72,7 @@ export default function ProductForm() {
                 <FormInput
                   {...formData.name}
                   className="dsc-form-control"
+                  onTurnDirty={handleTurnDirty}
                   onChange={handleInputChange}
                 />
                 <div className='dsc-form-error'>{formData.name.message}</div>
@@ -85,6 +90,7 @@ export default function ProductForm() {
                 <FormInput
                   {...formData.imgUrl}
                   className="dsc-form-control"
+                  onTurnDirty={handleTurnDirty}
                   onChange={handleInputChange}
                 />
                 <div className='dsc-form-error'>{formData.imgUrl.message}</div>
