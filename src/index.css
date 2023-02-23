@@ -199,7 +199,7 @@ main {
   width: 100%;
 }
 
-.dsc-form-control[data-invalid="true"] {
+.dsc-form-control[data-invalid="true"][data-dirty="true"] {
   border: 1px solid var(--dsc-color-error);
 }
 
@@ -210,6 +210,6 @@ main {
   display: none;
 }
 
-.dsc-form-control[data-invalid="true"]~div {
+.dsc-form-control[data-invalid="true"][data-dirty="true"]~div {
   display: unset;
 }

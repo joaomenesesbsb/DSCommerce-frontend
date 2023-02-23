@@ -13,7 +13,6 @@ export default function ProductForm() {
   const isEditing = params.productId !== 'create';
 
   const [formData, setFormData] = useState<any>({
-
     name: {
       value: "",
       id: "name",
@@ -56,6 +55,10 @@ export default function ProductForm() {
     setFormData(dataValidated);
   }
 
+  function handleTurnDirty(name : string){
+    setFormData(forms.toDirty(formData, name));
+  }
+
   return (
     <main>
       <section id="product-form-section" className="dsc-container">
@@ -75,6 +78,7 @@ export default function ProductForm() {
                 <FormInput
                   {...formData.price}
                   className="dsc-form-control"
+                  onTurnDirty={handleTurnDirty}
                   onChange={handleInputChange}
                 />
                 <div className='dsc-form-error'>{formData.price.message}</div>
