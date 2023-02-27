@@ -217,6 +217,23 @@ main {
   text-align: center;
 }
 
+.dsc-form-controls-container {
+  width: 100%;
+  display: grid;
+  grid-gap: 20px;
+  margin: 20px 0;
+}
+
+.dsc-form-control {
+  width: 100%;
+  height: 40px;
+  font-size: 16px;
+  padding: 0 20px;
+  color: var(--dsc-color-font-primary);
+  border-radius: 4px;
+  border: 1px solid var(--dsc-color-card-border);
+}
+
 .dsc-form-control:focus {
   outline: none;
 }
@@ -225,16 +242,15 @@ main {
   color: var(--dsc-color-font-placeholder);
 }
 
-.dsc-select:invalid {
-  color: var(--dsc-color-font-placeholder);
+.dsc-form-error {
+  color: var(--dsc-color-error);
+  font-size: 12px;
+  padding-left: 4px;
 }
 
-.dsc-select option[disabled] {
-  display: none;
-}
-
-.dsc-select option {
-  color: var(--dsc-color-font-primary);
+.dsc-form-select-container {
+  padding: unset;
+  height: unset;
 }
 
 .dsc-textarea {

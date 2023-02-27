@@ -6,9 +6,9 @@ import * as forms from '../../../utils/forms';
 import * as productService from '../../../services/product-service';
 import * as categoryService from '../../../services/category-service';
 import FormTextArea from '../../../components/FormTextArea';
-import Select from 'react-select';
 import { CategoryDTO } from '../../../models/category';
 import FormSelect from '../../../components/FormSelect';
+import { selectStyles } from '../../../utils/select';
 
 
 export default function ProductForm() {
@@ -47,7 +47,7 @@ export default function ProductForm() {
       id: "imgUrl",
       name: "imgUrl",
       type: "text",
-      placeholder: "img",
+      placeholder: "imagem",
     },
     description: {
       value: "",
@@ -64,8 +64,8 @@ export default function ProductForm() {
       value: [],
       id: "categories",
       name: "categories",
-      placeholder:"categorias",
-      validation: function(v: CategoryDTO[]){
+      placeholder: "categorias",
+      validation: function (v: CategoryDTO[]) {
         return v.length > 0;
       },
       message: 'Escolha ao menos uma categoria'
@@ -133,15 +133,16 @@ export default function ProductForm() {
               </div>
               <div>
                 <FormSelect
-                {...formData.categories}
-                className="dsc-form-control"
+                  {...formData.categories}
+                  className="dsc-form-control dsc-form-select-container"
+                  styles={selectStyles}
                   options={categories}
                   onChange={(obj: any) => {
                     setFormData(forms.updateAndValidate(formData, "categories", obj));
                   }}
                   onTurnDirty={handleTurnDirty}
                   isMulti
-                  getOptionLabel={(obj: any) => obj.name }
+                  getOptionLabel={(obj: any) => obj.name}
                   getOptionValue={(obj: any) => String(obj.id)}
                 />
                 <div className='dsc-form-error'>{formData.categories.message}</div>
