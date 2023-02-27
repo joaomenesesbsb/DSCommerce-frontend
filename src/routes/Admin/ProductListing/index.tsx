@@ -40,6 +40,14 @@ export default function ProductListing() {
     name: ''
   });
 
+  useEffect(() => {
+    productService.findPageRequest(queryParams.page, queryParams.name)
+      .then(response => {
+        setProducts(products.concat(response.data.content));
+        setIsLastPage(response.data.last);
+      })
+  }, [queryParams]);
+
   function handleSearch(searchText: string) {
     setProducts([]);
     setQueryParams({ ...queryParams, page: 0, name: searchText });
@@ -49,42 +57,40 @@ export default function ProductListing() {
     setQueryParams({ ...queryParams, page: queryParams.page + 1 });
   }
 
-  function handleDialogInfoClose(){
-    setDialogInfoData({...dialogInfoData, visible: false});
+  function handleDialogInfoClose() {
+    setDialogInfoData({ ...dialogInfoData, visible: false });
   }
 
-  function handleDeleteClick(productId: number){
+  function handleDeleteClick(productId: number) {
     setDialogConfirmationData({ ...dialogConfirmationData, id: productId, visible: true });
   }
 
-  function handleDialogConfirmationAnswer(answer: boolean, productId: number){
+  function handleUpdateClick(productId: number) {
+    navigate(`/admin/products/${productId}`)
+  }
+
+  function handleDialogConfirmationAnswer(answer: boolean, productId: number) {
     if (answer) {
       productService.deleteById(productId)
-      .then(() => {
-        setProducts([]);
-        setQueryParams({ ...queryParams, page: 0});
-      })
-      .catch(error => {
-        setDialogInfoData({
-          visible: true, 
-          message: error.response.data.error
+        .then(() => {
+          setProducts([]);
+          setQueryParams({ ...queryParams, page: 0 });
         })
-      })
+        .catch(error => {
+          setDialogInfoData({
+            visible: true,
+            message: error.response.data.error
+          })
+        })
     }
     setDialogConfirmationData({ ...dialogConfirmationData, visible: false });
   }
 
-  function handleNewProductClick(){
+  function handleNewProductClick() {
     navigate('/admin/products/create')
   }
 
-  useEffect(() => {
-    productService.findPageRequest(queryParams.page, queryParams.name)
-      .then(response => {
-        setProducts(products.concat(response.data.content));
-        setIsLastPage(response.data.last);
-      })
-  }, [queryParams]);
+  
 
   return (
     <main>
@@ -117,7 +123,7 @@ export default function ProductListing() {
                   <td><img className="dsc-product-listing-image" src={item.imgUrl} alt={item.name} /></td>
                   <td className="dsc-tb768">R$ {item.price.toFixed(2)}</td>
                   <td className="dsc-txt-left">{item.name}</td>
-                  <td><img className="dsc-product-listing-btn" src={editIcon} alt="Editar" /></td>
+                  <td><img onClick={() => handleUpdateClick(item.id)} className="dsc-product-listing-btn" src={editIcon} alt="Editar" /></td>
                   <td><img onClick={() => handleDeleteClick(item.id)} className="dsc-product-listing-btn" src={deleteIcon} alt="Deletar" /></td>
                 </tr>)
             }
