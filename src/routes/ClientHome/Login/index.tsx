@@ -10,6 +10,8 @@ export default function Login() {
 
     const navigate = useNavigate();
 
+    const [submitResponseFail, setSubmitResponseFail] = useState(false);
+
     const [formData, setFormData] = useState<any>({
         username: {
             value: "",
@@ -34,6 +36,15 @@ export default function Login() {
     const { setContextTokenPayload } = useContext(ContextToken);
 
     function handleSubmit(e: any) {
+
+        setSubmitResponseFail(false);
+        
+        const formDataValidated = forms.dirtyAndValidateAll(formData);
+        if (forms.hasAnyInvalid(formDataValidated)) {
+            setFormData(formDataValidated);
+            return;
+        }
+
         e.preventDefault();
         authService.loginRequest(forms.toValues(formData))
             .then(response => {
@@ -43,16 +54,16 @@ export default function Login() {
             }
             )
             .catch(error =>
-                console.log(error));
+                setSubmitResponseFail(true));
     }
 
     function handleInputChange(e: any) {
         setFormData(forms.updateAndValidate(formData, e.target.name, e.target.value));
-      }
-    
-      function handleTurnDirty(name : string){
+    }
+
+    function handleTurnDirty(name: string) {
         setFormData(forms.dirtyAndValidate(formData, name));
-      }
+    }
 
     return (
         <main>
@@ -79,6 +90,12 @@ export default function Login() {
                                 />
                             </div>
                         </div>
+                        {
+                            submitResponseFail &&
+                            <div className='dsc-form-global-error'>
+                                Usúario ou senha inválidos
+                            </div>
+                        }
 
                         <div className="dsc-login-form-buttons dsc-mt20">
                             <button type="submit" className="dsc-btn dsc-btn-blue">Entrar</button>
