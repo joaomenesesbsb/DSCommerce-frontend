@@ -121,6 +121,11 @@ export default function ProductForm() {
       .then(response => {
         navigate('/admin/products');
       })
+      .catch(error => {
+        console.log(error.response.data.errors)
+        const newInputs = forms.setBackendErrors(formData, error.response.data.errors);
+        setFormData(newInputs);
+      })
   }
 
   return (
